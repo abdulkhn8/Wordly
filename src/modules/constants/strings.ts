@@ -9,10 +9,10 @@ export const strings = {
     skip: 'SKIP',
     next: 'NEXT',
     home: 'HOME',
-    successMessage: 'Congratulations !!',
+    successMessage: 'Correct!\nCongratulations',
     newHighScoreMessage: 'New High Score',
     FailureMessage: 'Oops, Wrong Answer',
-    earnedPointsMessage: 'Your earned {0} points',
+    earnedPointsMessage: 'Your earned {0}\n points',
     holdOn: 'Hold on!',
     puzzleQuit: 'Are you sure you want to go back? \n You will loose this game'
 }
