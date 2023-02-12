@@ -17,14 +17,17 @@ const HomeScreen = () => {
     const [gameData, setGameData] = useState<IGameData>()
     const [puzzleDataType, setPuzzleDataType] = useState('')
 
+    const setData = (_puzzleData: string, _gameData: any) => {
+        setPuzzleDataType(_puzzleData)
+        setGameData(_gameData)
+    }
     const handleAnimalClick = () => {
         const _gameData: IGameData = {
             data: shuffle(puzzleRawData.animals),
             index: 0,
             score: 0
         }
-        setGameData(_gameData)
-        setPuzzleDataType(animals)
+        setData(animals, _gameData)
     }
     const handleCitiesClick = () => {
         const _gameData: IGameData = {
@@ -32,8 +35,7 @@ const HomeScreen = () => {
             index: 0,
             score: 0
         }
-        setGameData(_gameData)
-        setPuzzleDataType(cities)
+        setData(cities, _gameData)
     }
     const handleFoodClick = () => {
         const _gameData: IGameData = {
@@ -41,13 +43,12 @@ const HomeScreen = () => {
             index: 0,
             score: 0
         }
-        setGameData(_gameData)
-        setPuzzleDataType(food)
+        setData(food, _gameData)
     }
     const handleStartClick = () => {
         if (gameData) {
-            navigationService.navigateToPuzzle(gameData)
-            setPuzzleDataType('')
+            navigationService.navigateToPuzzle({ ...gameData })
+            setData('', undefined)
         }
     }
     const handleSLeaderBoardClick = () => {
