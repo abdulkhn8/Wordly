@@ -3,9 +3,9 @@ import React, { } from 'react'
 import { IHintButton } from './types'
 import { colors, FontSize } from '../../modules/constants'
 import { testProps } from '../../modules/utils'
+const { black } = colors
 
 const HintButton = (props: IHintButton) => {
-    const { black } = colors
 
     const handleClick = () => {
         props.letter && props.onClick?.()
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        fontSize: FontSize.xxLarge
+        fontSize: FontSize.xxLarge,
+        color: black
     }
 })
 

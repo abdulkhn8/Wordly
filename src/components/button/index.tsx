@@ -3,9 +3,9 @@ import React from 'react'
 import { IButton } from './types'
 import { colors, FontSize } from '../../modules/constants'
 import { testProps } from '../../modules/utils'
+const { black } = colors
 
 const Button = (props: IButton) => {
-    const { black } = colors
     const handleCitiesClick = (event: any) => {
         props.onClick?.()
     }
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     text: {
-        fontSize: FontSize.xLarge
+        fontSize: FontSize.xLarge,
+        color: black
     }
 })
 

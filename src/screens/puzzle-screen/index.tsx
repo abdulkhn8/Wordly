@@ -6,14 +6,14 @@ import Button from '../../components/button'
 import HintButton from '../../components/hint-button'
 import { isArrayEquals, shuffle } from '../../modules/utils'
 import useNavigationService from '../../modules/hooks/navigation-service'
-import useStorageService  from '../../modules/hooks/storage-service'
+import useStorageService from '../../modules/hooks/storage-service'
+const { pinkBackground, pinkBorder, success, black, grey } = colors
 
 const PuzzleScreen = (props: any) => {
     const navigationService = useNavigationService()
     const storageService = useStorageService()
 
     const { gameData } = props.route.params
-    const { pinkBackground, pinkBorder, success, black } = colors
     const { next, skip, holdOn, puzzleQuit } = strings
 
     const relations = useRef<Array<number>>([])
@@ -21,7 +21,7 @@ const PuzzleScreen = (props: any) => {
     const [data] = useState<IGameData>(gameData)
     const isLastPuzzle = data.data.length == data.index + 1
     const lettersArray = data.data[data.index].answer.split('')
-    
+
     const [puzzleComplete, setPuzzleComplete] = useState(false)
     const [hints, setHints] = useState<Array<string>>(shuffle(lettersArray))
     const [selections, setSelections] = useState<Array<string>>(Array(lettersArray.length).fill(''))
@@ -133,6 +133,7 @@ const PuzzleScreen = (props: any) => {
                 <View style={styles.hintContainer}>
                     {selections.map((letter, index) =>
                         <HintButton
+                            key={`letter-key-${index}`}
                             testId={`letter-${index}`}
                             disabled={puzzleComplete}
                             letter={letter}
@@ -145,6 +146,7 @@ const PuzzleScreen = (props: any) => {
             <View style={styles.hintContainer}>
                 {hints.map((letter, index) =>
                     <HintButton
+                        key={`input-key-${index}`}
                         testId={`input-${index}`}
                         disabled={puzzleComplete}
                         letter={letter}
@@ -191,9 +193,10 @@ const styles = StyleSheet.create({
     },
     questionContainer: {
         fontSize: FontSize.xLarge,
+        color: grey,
         fontWeight: '500',
         padding: 20,
-        textAlign: 'center'
+        textAlign: 'center',
     }
 })
 

@@ -6,7 +6,7 @@ import { shuffle } from '../../modules/utils'
 import useNavigationService from '../../modules/hooks/navigation-service'
 import Button from '../../components/button'
 
-const { pinkBackground, pinkBorder, blueBackground, blueBorder, success } = colors
+const { pinkBackground, pinkBorder, blueBackground, blueBorder, success, black } = colors
 
 const HomeScreen = () => {
     const navigationService = useNavigationService()
@@ -115,7 +115,8 @@ const styles = StyleSheet.create({
         borderColor: blueBorder,
     },
     appTitleText: {
-        fontSize: FontSize.xxxLarge
+        fontSize: FontSize.xxxLarge,
+        color: black
     }
 })
 
