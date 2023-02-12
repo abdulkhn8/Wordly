@@ -4,12 +4,12 @@ import Button from '../../components/button'
 import useNavigationService from '../../modules/hooks/navigation-service'
 import useStorageService  from '../../modules/hooks/storage-service'
 import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
+const { blueBackground, blueBorder, grey, black } = colors
 
 const LeadersBoard = () => {
     const navigationService = useNavigationService()
     const storageService = useStorageService()
 
-    const { blueBackground, blueBorder } = colors
     const { home, highScore } = strings
 
     const [score, setScore] = useState(0)
@@ -53,10 +53,12 @@ const styles = StyleSheet.create({
         gap: 20
     },
     title: {
-        fontSize: FontSize.xxxLarge
+        fontSize: FontSize.xxxLarge,
+        color: black
     },
     score: {
-        fontSize: FontSize.xxxxxLarge
+        fontSize: FontSize.xxxxxLarge,
+        color: grey
     }
 })
 

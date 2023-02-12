@@ -4,9 +4,9 @@ import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
 import { stringFormat } from '../../modules/utils'
 import { IGameData } from '../../modules/types'
 import useNavigationService from '../../modules/hooks/navigation-service'
-import useStorageService  from '../../modules/hooks/storage-service'
+import useStorageService from '../../modules/hooks/storage-service'
 import Button from '../../components/button'
-const { pinkBackground, pinkBorder, success } = colors
+const { pinkBackground, pinkBorder, success, black } = colors
 
 const ResultScreen = (props: any) => {
     const navigationService = useNavigationService()
@@ -22,12 +22,13 @@ const ResultScreen = (props: any) => {
         navigationService.navigateToHome()
     }
     const saveScore = () => {
+        let prevScore = 0
         if (storageService.contains(StorageKeys.highScore)) {
-            const prevScore = storageService.getNumber(StorageKeys.highScore) ?? 0
-            if (prevScore < gameData.score) {
-                setNewHighScore(true)
-                storageService.set(StorageKeys.highScore, gameData.score)
-            }
+            prevScore = storageService.getNumber(StorageKeys.highScore) ?? 0
+        }
+        if (prevScore < gameData.score) {
+            setNewHighScore(true)
+            storageService.set(StorageKeys.highScore, gameData.score)
         }
     }
 
@@ -47,13 +48,14 @@ const ResultScreen = (props: any) => {
         return () => backHandler.remove();
     }, []);
 
+    const textColor = haveSomeScore ? success : black
     return (
         <>
             <View style={styles.container}></View>
             <View style={styles.container}>
-                <Text style={styles.title}>{haveSomeScore ? successMessage : FailureMessage}</Text>
-                {newHighScore ? <Text style={styles.title}>{newHighScoreMessage}</Text> : null}
-                <Text style={styles.subTitle}>{stringFormat(earnedPointsMessage, gameData.score)}</Text>
+                <Text style={{ ...styles.title, color: textColor }}>{haveSomeScore ? successMessage : FailureMessage}</Text>
+                {newHighScore ? <Text style={{ ...styles.title, color: textColor }}>{newHighScoreMessage}</Text> : null}
+                <Text style={{ ...styles.subTitle, color: textColor }}>{stringFormat(earnedPointsMessage, gameData.score)}</Text>
             </View>
             <View style={styles.container}>
                 <Button
@@ -78,12 +80,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: FontSize.xxxLarge,
         textAlign: 'center',
-        color: success
     },
     subTitle: {
         fontSize: FontSize.xxLarge,
         textAlign: 'center',
-        color: success
     },
 })
 

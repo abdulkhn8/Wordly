@@ -10,7 +10,7 @@
             "id": 2,
             "question": "The bird which lays more than 100 eggs in one nest is the?",
             "answer": "OSTRICH",
-            "score": 3
+            "score": 4
         },
         {
             "id": 3,
@@ -24,7 +24,7 @@
             "id": 4,
             "question": "Which place is also called as Sugar bowl of the World?",
             "answer": "CUBA",
-            "score": 3
+            "score": 4
         },
         {
             "id": 5,
@@ -36,7 +36,7 @@
             "id": 6,
             "question": "Which Place is also called as Land of Rising Sun?",
             "answer": "JAPAN",
-            "score": 3
+            "score": 4
         }
     ],
     "foods": [
@@ -50,7 +50,7 @@
             "id": 8,
             "question": "Where does coffee originate from?",
             "answer": "ETHIOPIA",
-            "score": 3
+            "score": 4
         },
         {
             "id": 9,

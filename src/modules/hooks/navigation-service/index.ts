@@ -13,12 +13,16 @@ function useNavigationService(): INavigationService {
         navigation.replace(routeName, params);
     }
     const navigateToHome = () => {
-        navigate(screens.home);
+        navigation.popToTop()
     }
     const navigateToPuzzle = (gameData: IGameData) => {
-        replace(screens.puzzle, { gameData });
+        const firstPuzzle = gameData.index == 0
+        if (firstPuzzle)
+            navigate(screens.puzzle, { gameData })
+        else
+            replace(screens.puzzle, { gameData });
     }
-    const navigateToResult =  (gameData: IGameData) => {
+    const navigateToResult = (gameData: IGameData) => {
         navigate(screens.result, { gameData });
     }
     const navigateToLeadersBoard = () => {

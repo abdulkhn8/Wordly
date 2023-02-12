@@ -14,5 +14,5 @@ export const strings = {
     FailureMessage: 'Oops, Wrong Answer',
     earnedPointsMessage: 'Your earned {0}\n points',
     holdOn: 'Hold on!',
-    puzzleQuit: 'Are you sure you want to go back? \n You will loose this game'
+    puzzleQuit: 'Are you sure you want to go back?\nYou will loose this game'
 }
