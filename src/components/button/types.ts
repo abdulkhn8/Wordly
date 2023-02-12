@@ -5,4 +5,5 @@ export interface IButton {
     borderWidth?: number,
     borderRadius?: number,
     borderColor?: string,
+    testId?: string,
 }

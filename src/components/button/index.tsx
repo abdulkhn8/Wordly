@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { IButton } from './types'
 import { colors, FontSize } from '../../modules/constants'
+import { testProps } from '../../modules/utils'
 
 const Button = (props: IButton) => {
     const { black } = colors
@@ -10,6 +11,7 @@ const Button = (props: IButton) => {
     }
     return (
         <TouchableOpacity
+            {...testProps(props.testId)}
             style={{
                 backgroundColor: props.backgroundColor ?? '',
                 borderWidth: props.borderWidth ?? 2,

@@ -1,11 +1,11 @@
 import { Alert, BackHandler, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Button from '../../components/button'
 import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
-import useNavigationService from '../../modules/hooks/navigation-service'
 import { stringFormat } from '../../modules/utils'
 import { IGameData } from '../../modules/types'
-import { useStorageService } from '../../modules/hooks/storage-service'
+import useNavigationService from '../../modules/hooks/navigation-service'
+import useStorageService  from '../../modules/hooks/storage-service'
+import Button from '../../components/button'
 const { pinkBackground, pinkBorder, success } = colors
 
 const ResultScreen = (props: any) => {
@@ -57,6 +57,7 @@ const ResultScreen = (props: any) => {
             </View>
             <View style={styles.container}>
                 <Button
+                    testId={'navigateToHome'}
                     title={home}
                     backgroundColor={pinkBackground}
                     borderColor={pinkBorder}

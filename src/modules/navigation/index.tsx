@@ -15,8 +15,7 @@ function Navigation() {
     } as any;
     return (
         <Stack.Navigator
-            initialRouteName={screens.home}
-        >
+            initialRouteName={screens.home}>
             <Stack.Screen
                 name={screens.home}
                 component={HomeScreen}

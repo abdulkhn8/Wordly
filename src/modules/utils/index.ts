@@ -9,7 +9,7 @@ export const isArrayEquals = (array1: Array<any>, array2: Array<any>) => {
   return JSON.stringify(array1) === JSON.stringify(array2)
 }
 
-export const shuffle = (array: Array<any>) => {
+export const shuffle = (array: Array<any>): Array<any> => {
   let currentIndex = array.length, randomIndex;
   const shuffledArray = [...array]
 
@@ -31,4 +31,15 @@ export const shuffle = (array: Array<any>) => {
   }
   else
     return shuffledArray;
+}
+
+export const testProps = (id?: string) => {
+  if (id)
+    return {
+      accessible: true,
+      testID: id,
+      accessibilityLabel: id
+    }
+  else
+    return {}
 }

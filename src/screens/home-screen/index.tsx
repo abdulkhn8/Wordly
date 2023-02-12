@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import Button from '../../components/button'
 import { colors, FontSize, strings } from '../../modules/constants'
-import useNavigationService from '../../modules/hooks/navigation-service'
 import { IGameData } from '../../modules/types'
 import { shuffle } from '../../modules/utils'
+import useNavigationService from '../../modules/hooks/navigation-service'
+import Button from '../../components/button'
 
 const { pinkBackground, pinkBorder, blueBackground, blueBorder, success } = colors
 
@@ -64,22 +64,25 @@ const HomeScreen = () => {
             <View style={{ flex: 1.5 }}>
                 <View style={{ gap: 20 }}>
                     <Button
+                        testId={'selectCities'}
                         title={cities}
                         onClick={handleCitiesClick}
                         borderColor={puzzleDataType === cities ? success : undefined} />
                     <Button
+                        testId={'selectFoods'}
                         title={food}
                         onClick={handleFoodClick}
                         borderColor={puzzleDataType === food ? success : undefined} />
                     <Button
+                        testId={'selectAnimals'}
                         title={animals}
                         onClick={handleAnimalClick}
                         borderColor={puzzleDataType === animals ? success : undefined} />
-
                 </View>
             </View>
             <View style={{ flex: .5 }}>
                 {gameData ? <Button
+                    testId={'startGame'}
                     title={start}
                     backgroundColor={pinkBackground}
                     borderColor={pinkBorder}
@@ -88,6 +91,7 @@ const HomeScreen = () => {
             </View>
             <View style={{ flex: .5 }}>
                 <Button
+                    testId={'navigateToLeadersBoard'}
                     title={leadersBoard}
                     borderWidth={0}
                     onClick={handleSLeaderBoardClick} />

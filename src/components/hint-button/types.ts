@@ -3,4 +3,5 @@ export interface IHintButton {
     onClick: Function,
     disabled?: boolean,
     borderColor?: string,
+    testId?: string,
 }

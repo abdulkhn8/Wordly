@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, BackHandler, Alert } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import Button from '../../components/button'
 import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
 import { IGameData } from '../../modules/types'
-import useNavigationService from '../../modules/hooks/navigation-service'
+import Button from '../../components/button'
 import HintButton from '../../components/hint-button'
 import { isArrayEquals, shuffle } from '../../modules/utils'
-import { useStorageService } from '../../modules/hooks/storage-service'
+import useNavigationService from '../../modules/hooks/navigation-service'
+import useStorageService  from '../../modules/hooks/storage-service'
 
 const PuzzleScreen = (props: any) => {
     const navigationService = useNavigationService()
@@ -16,15 +16,15 @@ const PuzzleScreen = (props: any) => {
     const { pinkBackground, pinkBorder, success, black } = colors
     const { next, skip, holdOn, puzzleQuit } = strings
 
-    const [puzzleComplete, setPuzzleComplete] = useState(false)
-    const [data, setData] = useState<IGameData>(gameData)
+    const relations = useRef<Array<number>>([])
+
+    const [data] = useState<IGameData>(gameData)
     const isLastPuzzle = data.data.length == data.index + 1
     const lettersArray = data.data[data.index].answer.split('')
-
+    
+    const [puzzleComplete, setPuzzleComplete] = useState(false)
     const [hints, setHints] = useState<Array<string>>(shuffle(lettersArray))
     const [selections, setSelections] = useState<Array<string>>(Array(lettersArray.length).fill(''))
-
-    const relations = useRef<Array<number>>([])
 
     useEffect(() => {
         const backAction = () => {
@@ -133,6 +133,7 @@ const PuzzleScreen = (props: any) => {
                 <View style={styles.hintContainer}>
                     {selections.map((letter, index) =>
                         <HintButton
+                            testId={`letter-${index}`}
                             disabled={puzzleComplete}
                             letter={letter}
                             onClick={() => { handleSelectionClick(index) }}
@@ -144,6 +145,7 @@ const PuzzleScreen = (props: any) => {
             <View style={styles.hintContainer}>
                 {hints.map((letter, index) =>
                     <HintButton
+                        testId={`input-${index}`}
                         disabled={puzzleComplete}
                         letter={letter}
                         onClick={() => { handleHintClick(index) }}
@@ -151,12 +153,14 @@ const PuzzleScreen = (props: any) => {
             </View>
             {puzzleComplete
                 ? <Button
+                    testId={`nextPuzzle`}
                     title={next}
                     backgroundColor={pinkBackground}
                     borderColor={pinkBorder}
                     borderRadius={0}
                     onClick={handleNextClick} />
                 : <Button
+                    testId={`skipThisPuzzle`}
                     title={skip}
                     backgroundColor={pinkBackground}
                     borderColor={pinkBorder}

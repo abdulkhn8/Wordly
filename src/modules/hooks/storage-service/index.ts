@@ -52,5 +52,5 @@ function useStorageService(): IStorageService {
         }
     )
 }
-export { useStorageService };
+export default useStorageService ;
 export * from './types';

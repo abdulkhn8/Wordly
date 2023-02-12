@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Button from '../../components/button'
-import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
 import useNavigationService from '../../modules/hooks/navigation-service'
-import { useStorageService } from '../../modules/hooks/storage-service'
+import useStorageService  from '../../modules/hooks/storage-service'
+import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
 
 const LeadersBoard = () => {
     const navigationService = useNavigationService()
@@ -34,6 +34,7 @@ const LeadersBoard = () => {
             </View>
             <View style={styles.container}>
                 <Button
+                    testId={'navigateToHome'}
                     title={home}
                     backgroundColor={blueBackground}
                     borderColor={blueBorder}

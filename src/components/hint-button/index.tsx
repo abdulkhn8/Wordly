@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React, { } from 'react'
 import { IHintButton } from './types'
 import { colors, FontSize } from '../../modules/constants'
+import { testProps } from '../../modules/utils'
 
 const HintButton = (props: IHintButton) => {
     const { black } = colors
@@ -12,6 +13,7 @@ const HintButton = (props: IHintButton) => {
 
     return (
         <TouchableOpacity
+            {...testProps(props.testId)}
             style={{
                 ...styles.container,
                 borderColor: props.borderColor ?? black,
