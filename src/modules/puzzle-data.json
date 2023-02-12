@@ -1,0 +1,62 @@
+{
+    "animals": [
+        {
+            "id": 1,
+            "question": "Which is National Animal of India?",
+            "answer": "TIGER",
+            "score": 3
+        },
+        {
+            "id": 2,
+            "question": "The bird which lays more than 100 eggs in one nest is the?",
+            "answer": "OSTRICH",
+            "score": 3
+        },
+        {
+            "id": 3,
+            "question": "The first animal to go into space was?",
+            "answer": "DOG",
+            "score": 3
+        }
+    ],
+    "cities": [
+        {
+            "id": 4,
+            "question": "Which place is also called as Sugar bowl of the World?",
+            "answer": "CUBA",
+            "score": 3
+        },
+        {
+            "id": 5,
+            "question": "Which place is also called as Gift of the Nile?",
+            "answer": "LIBYA",
+            "score": 3
+        },
+        {
+            "id": 6,
+            "question": "Which Place is also called as Land of Rising Sun?",
+            "answer": "JAPAN",
+            "score": 3
+        }
+    ],
+    "foods": [
+        {
+            "id": 7,
+            "question": "Lectin protein is found in?",
+            "answer": "WHEAT",
+            "score": 3
+        },
+        {
+            "id": 8,
+            "question": "Where does coffee originate from?",
+            "answer": "ETHIOPIA",
+            "score": 3
+        },
+        {
+            "id": 9,
+            "question": "Where does pineapple originate from?",
+            "answer": "BRAZIL",
+            "score": 3
+        }
+    ]
+}
