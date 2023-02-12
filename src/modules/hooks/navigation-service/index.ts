@@ -1,10 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
-import { screens } from "../../constants";
+import { Alert, Share } from "react-native";
+import { screens, strings } from "../../constants";
 import { IGameData } from "../../types";
+import { stringFormat } from "../../utils";
 import { INavigationService } from "./types";
 
 function useNavigationService(): INavigationService {
     const navigation = useNavigation();
+    const { shareScore } = strings
 
     const navigate = (routeName: string, params: any = {}) => {
         navigation.navigate(routeName, params);
@@ -28,12 +31,29 @@ function useNavigationService(): INavigationService {
     const navigateToLeadersBoard = () => {
         navigate(screens.leadersBoard);
     }
+    const shareScoreWithOthers = async (score: number) =>{
+        try {
+            const result = await Share.share({ message: stringFormat(shareScore, score) });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error: any) {
+            Alert.alert(error.message);
+        }
+    }
 
     return ({
         navigateToHome,
         navigateToPuzzle,
         navigateToResult,
-        navigateToLeadersBoard
+        navigateToLeadersBoard,
+        shareScoreWithOthers
     })
 }
 

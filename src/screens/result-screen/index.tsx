@@ -1,4 +1,4 @@
-import { Alert, BackHandler, StyleSheet, Text, View, Share } from 'react-native'
+import { BackHandler, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
 import { stringFormat } from '../../modules/utils'
@@ -19,21 +19,8 @@ const ResultScreen = (props: any) => {
 
     const [newHighScore, setNewHighScore] = useState(false)
 
-    const handleShareClick = async () => {
-        try {
-            const result = await Share.share({ message: stringFormat(shareScore, gameData.score) });
-            if (result.action === Share.sharedAction) {
-                if (result.activityType) {
-                    // shared with activity type of result.activityType
-                } else {
-                    // shared
-                }
-            } else if (result.action === Share.dismissedAction) {
-                // dismissed
-            }
-        } catch (error: any) {
-            Alert.alert(error.message);
-        }
+    const handleShareClick = () => {
+        navigationService.shareScoreWithOthers(gameData.score)
     }
     const handleHomeClick = () => {
         navigationService.navigateToHome()
