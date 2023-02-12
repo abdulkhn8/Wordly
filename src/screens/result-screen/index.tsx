@@ -1,4 +1,4 @@
-import { Alert, BackHandler, StyleSheet, Text, View } from 'react-native'
+import { Alert, BackHandler, StyleSheet, Text, View, Share } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { colors, FontSize, StorageKeys, strings } from '../../modules/constants'
 import { stringFormat } from '../../modules/utils'
@@ -6,7 +6,7 @@ import { IGameData } from '../../modules/types'
 import useNavigationService from '../../modules/hooks/navigation-service'
 import useStorageService from '../../modules/hooks/storage-service'
 import Button from '../../components/button'
-const { pinkBackground, pinkBorder, success, black } = colors
+const { pinkBackground, pinkBorder, success, black, blueBackground, blueBorder } = colors
 
 const ResultScreen = (props: any) => {
     const navigationService = useNavigationService()
@@ -14,10 +14,27 @@ const ResultScreen = (props: any) => {
 
     const gameData = props.route.params.gameData as IGameData
     const haveSomeScore = gameData.score > 0
-    const { home, FailureMessage, successMessage, earnedPointsMessage, newHighScoreMessage } = strings
+    const textColor = haveSomeScore ? success : black
+    const { home, FailureMessage, successMessage, earnedPointsMessage, newHighScoreMessage, share, shareScore } = strings
 
     const [newHighScore, setNewHighScore] = useState(false)
 
+    const handleShareClick = async () => {
+        try {
+            const result = await Share.share({ message: stringFormat(shareScore, gameData.score) });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error: any) {
+            Alert.alert(error.message);
+        }
+    }
     const handleHomeClick = () => {
         navigationService.navigateToHome()
     }
@@ -48,7 +65,6 @@ const ResultScreen = (props: any) => {
         return () => backHandler.remove();
     }, []);
 
-    const textColor = haveSomeScore ? success : black
     return (
         <>
             <View style={styles.container}></View>
@@ -65,6 +81,13 @@ const ResultScreen = (props: any) => {
                     borderColor={pinkBorder}
                     borderRadius={0}
                     onClick={handleHomeClick} />
+                <Button
+                    testId={'shareResult'}
+                    title={share}
+                    backgroundColor={blueBackground}
+                    borderColor={blueBorder}
+                    borderRadius={0}
+                    onClick={handleShareClick} />
             </View>
         </>
     )

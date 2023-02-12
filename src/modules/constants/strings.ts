@@ -9,10 +9,12 @@ export const strings = {
     skip: 'SKIP',
     next: 'NEXT',
     home: 'HOME',
+    share: 'SHARE',
     successMessage: 'Correct!\nCongratulations',
     newHighScoreMessage: 'New High Score',
     FailureMessage: 'Oops, Wrong Answer',
     earnedPointsMessage: 'Your earned {0}\n points',
     holdOn: 'Hold on!',
-    puzzleQuit: 'Are you sure you want to go back?\nYou will loose this game'
+    puzzleQuit: 'Are you sure you want to go back?\nYou will loose this game',
+    shareScore: 'Hey I am using "Wordly" game, and I have scored {0} points.'
 }
